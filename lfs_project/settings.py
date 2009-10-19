@@ -115,6 +115,7 @@ INSTALLED_APPS = (
     'lfs.tagging',
     'lfs.tax',
     'lfs.utils',
+    'lfs.voucher',
     'paypal.standard.ipn',
     'paypal.standard.pdt',    
 )
