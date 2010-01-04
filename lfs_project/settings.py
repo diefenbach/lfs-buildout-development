@@ -65,11 +65,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "pagination.middleware.PaginationMiddleware",
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     # "django.middleware.cache.FetchFromCacheMiddleware",
-    "lfs.utils.middleware.ProfileMiddleware",
+    "lfs.utils.middleware.ProfileMiddleware",    
 )
 
 ROOT_URLCONF = 'urls'
@@ -87,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     "django.contrib.flatpages",
+    "django.contrib.redirects",
     "django.contrib.sitemaps",
     "lfstheme",
     "pagination",
