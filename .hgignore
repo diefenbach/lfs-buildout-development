@@ -10,3 +10,5 @@ lfs.db
 *parts/
 *bin/
 *downloads/
+.project
+.pydevproject
