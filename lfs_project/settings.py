@@ -97,8 +97,9 @@ INSTALLED_APPS = (
     "tagging",
     "portlets",
     "lfs",
-    "lfs.tests",
+    "lfs.tests",    
     'lfs.core',
+    'lfs.addresses',
     'lfs.caching',
     'lfs.cart',
     'lfs.catalog',
@@ -153,7 +154,7 @@ CACHE_BACKEND = 'dummy:///'
 CATEGORY_PREFIX = "kategorie-"
 LFS_RECENT_PRODUCTS_LIMIT = 5
 
-EMAIL_HOST = ""
+EMAIL_HOST = "localhost"
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 
