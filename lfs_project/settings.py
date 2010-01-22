@@ -99,7 +99,6 @@ INSTALLED_APPS = (
     "lfs",
     "lfs.tests",    
     'lfs.core',
-    'lfs.addresses',
     'lfs.caching',
     'lfs.cart',
     'lfs.catalog',
