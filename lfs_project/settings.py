@@ -120,7 +120,8 @@ INSTALLED_APPS = (
     'lfs.utils',
     'lfs.voucher',
     'paypal.standard.ipn',
-    'paypal.standard.pdt',    
+    'paypal.standard.pdt',
+    'windmill',
 )
 
 FORCE_SCRIPT_NAME=""
