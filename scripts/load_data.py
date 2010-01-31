@@ -94,7 +94,7 @@ def load_data():
     
     cart_portlet, created = CartPortlet.objects.get_or_create(title="Cart")
     pages_portlet, created = PagesPortlet.objects.get_or_create(title="Information")
-    categories_portlet, created = CategoriesPortlet.objects.get_or_create(title="Flowers")
+    categories_portlet, created = CategoriesPortlet.objects.get_or_create(title="Products")
     relatedproducts_portlet, created = RelatedProductsPortlet.objects.get_or_create(title="Related Products")
     recentproducts_portlet, created = RecentProductsPortlet.objects.get_or_create(title="Recent Products")
     
