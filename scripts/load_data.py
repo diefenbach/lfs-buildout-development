@@ -1,11 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
+# python imports
+import os
+
+# django imports
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.contrib.webdesign.lorem_ipsum import paragraph, sentence, words
-from lfs.core.models import Action, Shop, Country
+
+# lfs imports
+from lfs.core.models import Action, Shop
 from lfs.catalog.models import Category, Product, Image, DeliveryTime
 from lfs.catalog.settings import DELIVERY_TIME_UNIT_DAYS
 from lfs.core.fields.thumbs import ImageWithThumbsField
@@ -16,8 +22,10 @@ from lfs.shipping.models import ShippingMethod, ShippingMethodPrice
 from lfs.tax.models import Tax
 from portlets.models import PortletAssignment, Slot, PortletRegistration
 from lfs.portlet.models import CartPortlet, CategoriesPortlet, PagesPortlet, RecentProductsPortlet, RelatedProductsPortlet, TextPortlet, PagesPortlet
-import os, psycopg2
+from lfs.payment.models import PaymentMethod
 
+# other imports
+from countries.models import Country
 
 DIRNAME=os.path.dirname(__file__)
 
@@ -30,14 +38,52 @@ def load_data():
     
     ie = Country.objects.get(iso="IE")
     gb = Country.objects.get(iso="GB")
+    de = Country.objects.get(iso="DE")
+    us = Country.objects.get(iso="US")
+    fr = Country.objects.get(iso="FR")
     
     shop, created = Shop.objects.get_or_create(name="lfs test", shop_owner="John Doe",
                                       default_country=ie)
     shop.save()
     shop.countries.add(ie)
     shop.countries.add(gb)
+    shop.countries.add(de)
+    shop.countries.add(us)
+    shop.countries.add(fr)
     shop.save()
     
+    tax = Tax.objects.create(rate = 21)
+
+    direct_debit = PaymentMethod.objects.create(
+            name="Direct Debit",
+            active=True,
+            tax=tax,
+        )
+
+    cod = PaymentMethod.objects.create(
+        name="Cash on delivery",
+        active=True,
+        tax=tax,
+    )
+
+    paypal = PaymentMethod.objects.create(
+        name="PayPal",
+        active=True,
+        tax=tax,
+    )
+
+    prepayment = PaymentMethod.objects.create(
+        name="Prepayment",
+        active=True,
+        tax=tax,
+    )
+
+    by_invoice = PaymentMethod.objects.create(
+        name="By invoice",
+        active=True,
+        tax=tax,
+    )
+
     categories = ['animals', 'transport', 'food']
     for cat in categories:    
         category, created = Category.objects.get_or_create(name=cat, slug=slugify(cat))
