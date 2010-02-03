@@ -10,5 +10,9 @@ lfs.db
 *parts/
 *bin/
 *downloads/
+*lib/
+*include/
 .project
 .pydevproject
+.settings
+*pysqlite2-doc/
