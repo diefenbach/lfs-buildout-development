@@ -41,15 +41,21 @@ def load_data():
     de = Country.objects.get(iso="DE")
     us = Country.objects.get(iso="US")
     fr = Country.objects.get(iso="FR")
+    nl = Country.objects.get(iso="NL")
     
     shop, created = Shop.objects.get_or_create(name="lfs test", shop_owner="John Doe",
                                       default_country=ie)
     shop.save()
-    shop.countries.add(ie)
-    shop.countries.add(gb)
-    shop.countries.add(de)
-    shop.countries.add(us)
-    shop.countries.add(fr)
+    for ic in Country.objects.all():
+        shop.invoice_countries.add(ic)
+
+    shop.shipping_countries.add(ie)
+    shop.shipping_countries.add(gb)
+    shop.shipping_countries.add(de)
+    shop.shipping_countries.add(us)
+    shop.shipping_countries.add(fr)
+    shop.shipping_countries.add(nl)
+
     shop.save()
     
     tax = Tax.objects.create(rate = 21)
