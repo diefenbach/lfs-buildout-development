@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'lfs.mail',
     'lfs.manage',
     'lfs.marketing',
+    'lfs.manufacturer',
     'lfs.order',
     'lfs.page',
     'lfs.payment',
@@ -165,3 +166,8 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+REVIEWS_SHOW_PREVIEW = False
+REVIEWS_IS_NAME_REQUIRED = False
+REVIEWS_IS_EMAIL_REQUIRED = False
+REVIEWS_IS_MODERATED = False
