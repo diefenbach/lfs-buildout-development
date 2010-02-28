@@ -10,3 +10,7 @@ lfs.db
 *parts/
 *bin/
 *downloads/
+*lfs_project/media
+server.pid
+restart.sh
+local_settings.py
