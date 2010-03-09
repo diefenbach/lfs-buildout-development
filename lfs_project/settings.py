@@ -110,6 +110,7 @@ INSTALLED_APPS = (
     "lfs.export",
     'lfs.mail',
     'lfs.manage',
+    'lfs.manufacturer',
     'lfs.marketing',
     'lfs.order',
     'lfs.page',
