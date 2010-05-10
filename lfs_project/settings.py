@@ -125,7 +125,6 @@ INSTALLED_APPS = (
     'paypal.standard.ipn',
     'paypal.standard.pdt',
     'postal',
-    'windmill',
 )
 
 FORCE_SCRIPT_NAME=""
