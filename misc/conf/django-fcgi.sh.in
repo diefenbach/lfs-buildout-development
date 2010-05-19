@@ -1,0 +1,24 @@
+#!/bin/bash
+PIDFILE=${buildout:directory}/bin/lfs.pid
+
+echo $PIDFILE
+
+case "$1" in
+    "stop" )
+        if [ -f $PIDFILE ]; then
+            kill `cat -- $PIDFILE`
+            rm -f -- $PIDFILE
+        fi    
+    ;;
+    "" | "fg" )
+        if [ -f $PIDFILE ]; then
+            kill `cat -- $PIDFILE`
+            rm -f -- $PIDFILE
+        fi
+
+        if [ "$1" = "fg" ]; then
+            ${buildout:directory}/bin/django runfcgi method=threaded host=127.0.0.1 port=${django-fcgi:port} pidfile=$PIDFILE daemonize=false
+        else
+            ${buildout:directory}/bin/django runfcgi method=threaded host=127.0.0.1 port=${django-fcgi:port} pidfile=$PIDFILE
+        fi
+esac
