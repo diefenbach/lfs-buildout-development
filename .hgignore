@@ -10,7 +10,13 @@ lfs.db
 *parts/
 *bin/
 *downloads/
+*lib/
+*include/
 *lfs_project/media
+*pysqlite2-doc/
 server.pid
 restart.sh
 local_settings.py
+.project
+.pydevproject
+.settings

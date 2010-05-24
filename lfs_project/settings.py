@@ -81,6 +81,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'countries',
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,13 +90,14 @@ INSTALLED_APPS = (
     "django.contrib.flatpages",
     "django.contrib.redirects",    
     "django.contrib.sitemaps",
+    'django_extensions',
     "lfstheme",
     "pagination",
     'reviews',
     "tagging",
     "portlets",
     "lfs",
-    "lfs.tests",
+    "lfs.tests",    
     'lfs.core',
     'lfs.caching',
     'lfs.cart',
@@ -107,6 +109,7 @@ INSTALLED_APPS = (
     "lfs.export",
     'lfs.mail',
     'lfs.manage',
+    'lfs.manufacturer',
     'lfs.marketing',
     'lfs.manufacturer',
     'lfs.order',
@@ -120,7 +123,8 @@ INSTALLED_APPS = (
     'lfs.utils',
     'lfs.voucher',
     'paypal.standard.ipn',
-    'paypal.standard.pdt',    
+    'paypal.standard.pdt',
+    'postal',
 )
 
 FORCE_SCRIPT_NAME=""
@@ -153,7 +157,7 @@ CACHE_BACKEND = 'dummy:///'
 CATEGORY_PREFIX = "kategorie-"
 LFS_RECENT_PRODUCTS_LIMIT = 5
 
-EMAIL_HOST = ""
+EMAIL_HOST = "localhost"
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 
