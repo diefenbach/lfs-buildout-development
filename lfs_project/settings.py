@@ -55,21 +55,18 @@ SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
-    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",    
-    "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "pagination.middleware.PaginationMiddleware",
 
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # "django.middleware.cache.FetchFromCacheMiddleware",
-    "lfs.utils.middleware.ProfileMiddleware",
+    'lfs.utils.middleware.AJAXSimpleExceptionResponse',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'lfs.utils.middleware.ProfileMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -120,7 +117,9 @@ INSTALLED_APPS = (
     'lfs.utils',
     'lfs.voucher',
     'paypal.standard.ipn',
-    'paypal.standard.pdt',    
+    'paypal.standard.pdt',
+    'gunicorn',
+    'debug_toolbar',
 )
 
 FORCE_SCRIPT_NAME=""
@@ -150,16 +149,17 @@ INTERNAL_IPS = (
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_BACKEND = 'dummy:///'
 
-CATEGORY_PREFIX = "kategorie-"
-LFS_RECENT_PRODUCTS_LIMIT = 5
-
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 
 PAYPAL_RECEIVER_EMAIL = "info@yourbusiness.com"
 PAYPAL_IDENTITY_TOKEN = "set_this_to_your_paypal_pdt_identity_token"
+
+# TODO: Put this into the Shop model
 LFS_PAYPAL_REDIRECT = True
+LFS_AFTER_ADD_TO_CART = "lfs_cart"
+LFS_RECENT_PRODUCTS_LIMIT = 5
 
 try:
     from local_settings import *
