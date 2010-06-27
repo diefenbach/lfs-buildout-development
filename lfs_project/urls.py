@@ -12,10 +12,6 @@ urlpatterns = patterns("",
     (r'^manage/', include('lfs.manage.urls')),
 )
 
-urlpatterns += patterns("",
-    (r'^contact/', include('contact_form.urls')),
-)
-
 urlpatterns += patterns("",    
     (r'^reviews/', include('reviews.urls')),
     (r'^paypal/ipn/', include('paypal.standard.ipn.urls')),

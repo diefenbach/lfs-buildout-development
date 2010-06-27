@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     "portlets",
     "lfs",
     "lfs.tests",
+    'lfs.contact_form',
     'lfs.core',
     'lfs.caching',
     'lfs.cart',
