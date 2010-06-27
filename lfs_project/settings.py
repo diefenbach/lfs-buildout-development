@@ -65,8 +65,8 @@ MIDDLEWARE_CLASSES = (
     "pagination.middleware.PaginationMiddleware",
 
     'lfs.utils.middleware.AJAXSimpleExceptionResponse',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'lfs.utils.middleware.ProfileMiddleware',
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -158,15 +158,15 @@ PAYPAL_IDENTITY_TOKEN = "set_this_to_your_paypal_pdt_identity_token"
 
 # TODO: Put this into the Shop model
 LFS_PAYPAL_REDIRECT = True
-LFS_AFTER_ADD_TO_CART = "lfs_cart"
+LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
-
-try:
-    from local_settings import *
-except ImportError:
-    pass
 
 REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
