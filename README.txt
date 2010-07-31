@@ -20,7 +20,7 @@ How to use it?
     
 3. Bootstrap buildout
 
-    $ python bootstrap 
+    $ python bootstrap.py
     
 4. Run buildout
 
