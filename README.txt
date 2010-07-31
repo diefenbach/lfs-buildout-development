@@ -1,9 +1,9 @@
 What is it?
 ===========
 
-This is the 0.5 development branch buildout script for LFS. 
+This is the 0.5 development branch buildout script for LFS.
 
-It will create a complete developement evironment for LFS 0.5. 
+It will create a complete developement evironment for LFS 0.5.
 
 LFS is an online shop based on Python, Django and jQuery.
 
@@ -11,27 +11,27 @@ How to use it?
 ==============
 
 1. Check it out from bitbucket
-    
+
     $ hg clone https://bitbucket.org/diefenbach/lfs-buildout-development-0.5
 
 2. Change to the directory
 
     $ cd lfs-buildout-development
-    
+
 3. Bootstrap buildout
 
-    $ python bootstrap 
-    
+    $ python bootstrap.py
+
 4. Run buildout
 
     $ bin/buildout -v
-    
+
 5. Enter your database settings into lfs_project/settings.py
 
 6. Sync your database
 
     $ bin/django syncdb
-    
+
 7. Initialize LFS
 
     $ bin/django lfs_init
@@ -39,11 +39,11 @@ How to use it?
 8. Start server
 
     $ bin/django runserver
-    
+
 9. Browse to LFS
 
     http://localhost:8000
-    
+
 More Information
 ================
 
