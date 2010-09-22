@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     "django.contrib.flatpages",
     "django.contrib.redirects",    
     "django.contrib.sitemaps",
+    'django_countries',
     'django_extensions',
     "lfstheme",
     "pagination",
