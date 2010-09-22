@@ -9,9 +9,10 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.contrib.webdesign.lorem_ipsum import paragraph, sentence, words
+from django.core import management
 
 # lfs imports
-from lfs.core.models import Action, Shop
+from lfs.core.models import Action, Shop, Country
 from lfs.catalog.models import Category, Product, Image, DeliveryTime
 from lfs.catalog.settings import DELIVERY_TIME_UNIT_DAYS
 from lfs.core.fields.thumbs import ImageWithThumbsField
@@ -24,24 +25,23 @@ from portlets.models import PortletAssignment, Slot, PortletRegistration
 from lfs.portlet.models import CartPortlet, CategoriesPortlet, PagesPortlet, RecentProductsPortlet, RelatedProductsPortlet, TextPortlet, PagesPortlet
 from lfs.payment.models import PaymentMethod
 
-# other imports
-from countries.models import Country
 
 DIRNAME=os.path.dirname(__file__)
 
 
 def load_data():
-    
+    management.call_command('loaddata', 'lfs_all_countries.xml', verbosity=0)
+
     site = Site.objects.all()[0]
     site.name = site.domain = "www.example.com"
     site.save()
     
-    ie = Country.objects.get(iso="IE")
-    gb = Country.objects.get(iso="GB")
-    de = Country.objects.get(iso="DE")
-    us = Country.objects.get(iso="US")
-    fr = Country.objects.get(iso="FR")
-    nl = Country.objects.get(iso="NL")
+    ie = Country.objects.get(code="ie")
+    gb = Country.objects.get(code="gb")
+    de = Country.objects.get(code="de")
+    us = Country.objects.get(code="us")
+    fr = Country.objects.get(code="fr")
+    nl = Country.objects.get(code="nl")
     
     shop, created = Shop.objects.get_or_create(name="lfs test", shop_owner="John Doe",
                                       default_country=ie)
