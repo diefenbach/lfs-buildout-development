@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     'paypal.standard.pdt',
     'gunicorn',
     'debug_toolbar',
-	'postal,
+	'postal',
 )
 
 FORCE_SCRIPT_NAME=""
