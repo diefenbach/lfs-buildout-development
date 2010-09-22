@@ -10,8 +10,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'      # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = os.path.join(DIRNAME, "..", "lfs.db")      # Or path to database file if using sqlite3.
+DATABASE_ENGINE = ''      # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = ''      # Or path to database file if using sqlite3.
 DATABASE_USER = ''         # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -55,21 +55,18 @@ SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
-    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",    
-    "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "pagination.middleware.PaginationMiddleware",
 
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # "django.middleware.cache.FetchFromCacheMiddleware",
-    "lfs.utils.middleware.ProfileMiddleware",
+    'lfs.utils.middleware.AJAXSimpleExceptionResponse',
+    'lfs.utils.middleware.ProfileMiddleware',
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -97,7 +94,8 @@ INSTALLED_APPS = (
     "tagging",
     "portlets",
     "lfs",
-    "lfs.tests",    
+    "lfs.tests",
+    'lfs.contact_form',
     'lfs.core',
     'lfs.caching',
     'lfs.cart',
@@ -109,7 +107,6 @@ INSTALLED_APPS = (
     "lfs.export",
     'lfs.mail',
     'lfs.manage',
-    'lfs.manufacturer',
     'lfs.marketing',
     'lfs.manufacturer',
     'lfs.order',
@@ -124,7 +121,9 @@ INSTALLED_APPS = (
     'lfs.voucher',
     'paypal.standard.ipn',
     'paypal.standard.pdt',
-    'postal',
+    'gunicorn',
+    'debug_toolbar',
+	'postal,
 )
 
 FORCE_SCRIPT_NAME=""
@@ -154,23 +153,24 @@ INTERNAL_IPS = (
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_BACKEND = 'dummy:///'
 
-CATEGORY_PREFIX = "kategorie-"
-LFS_RECENT_PRODUCTS_LIMIT = 5
-
-EMAIL_HOST = "localhost"
+EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 
 PAYPAL_RECEIVER_EMAIL = "info@yourbusiness.com"
 PAYPAL_IDENTITY_TOKEN = "set_this_to_your_paypal_pdt_identity_token"
-LFS_PAYPAL_REDIRECT = True
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
+# TODO: Put this into the Shop model
+LFS_PAYPAL_REDIRECT = True
+LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
+LFS_RECENT_PRODUCTS_LIMIT = 5
 
 REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
