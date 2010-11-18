@@ -30,6 +30,7 @@ DIRNAME=os.path.dirname(__file__)
 
 
 def load_data():
+    print 'Starting load data'
     management.call_command('loaddata', 'lfs_all_countries.xml', verbosity=0)
 
     site = Site.objects.all()[0]
@@ -155,7 +156,7 @@ def load_data():
     PortletAssignment.objects.create(slot_id=right_slot.id, content=shop, portlet=cart_portlet, position=10)
     PortletAssignment.objects.create(slot_id=right_slot.id, content=shop, portlet=recentproducts_portlet, position=20)
     PortletAssignment.objects.create(slot_id=right_slot.id, content=shop, portlet=relatedproducts_portlet, position=30)
-    
+    print 'Finishing load data'
     
 def run():
     load_data()
