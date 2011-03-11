@@ -151,8 +151,8 @@ INTERNAL_IPS = (
 
 # CACHE_BACKEND = 'file:///'
 # CACHE_BACKEND = 'locmem:///'
-# CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-CACHE_BACKEND = 'dummy:///'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+# CACHE_BACKEND = 'dummy:///'
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -178,9 +178,11 @@ DEVSERVER_MODULES = (
 
     # Modules not enabled by default
     'devserver.modules.ajax.AjaxDumpModule',
-    'devserver.modules.profile.MemoryUseModule',
+    # 'devserver.modules.profile.MemoryUseModule',
     'devserver.modules.cache.CacheSummaryModule',
 )
+
+DEVSERVER_IGNORED_PREFIXES = ['/media']
 
 try:
     from local_settings import *
