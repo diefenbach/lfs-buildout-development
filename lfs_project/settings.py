@@ -78,6 +78,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    "devserver",
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -169,6 +170,17 @@ REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
+
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLRealTimeModule',
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+
+    # Modules not enabled by default
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.profile.MemoryUseModule',
+    'devserver.modules.cache.CacheSummaryModule',
+)
 
 try:
     from local_settings import *
