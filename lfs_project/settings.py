@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     'django_countries',
     'django_extensions',
+    'django_jenkins',
     "lfstheme",
     "pagination",
     'reviews',
