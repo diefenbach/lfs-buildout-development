@@ -23,3 +23,4 @@ local_settings.py
 *.idea/
 distribute*
 *reports/
+*dlcache
