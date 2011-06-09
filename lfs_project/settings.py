@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     "lfs_contact",
     'paypal.standard.ipn',
     'paypal.standard.pdt',
+    'piston',
     'gunicorn',
     'debug_toolbar',
 	'postal',
@@ -196,6 +197,8 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
                  'django_jenkins.tasks.django_tests',
                  'django_jenkins.tasks.run_pep8',
                  'django_jenkins.tasks.run_pyflakes',)
+
+PISTON_DISPLAY_ERRORS = True
 
 try:
     from local_settings import *
