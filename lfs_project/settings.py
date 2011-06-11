@@ -94,6 +94,7 @@ INSTALLED_APPS = (
     'django_countries',
     'django_extensions',
     'django_jenkins',
+    'djangorestframework',
     "lfstheme",
     "pagination",
     'reviews',
@@ -122,6 +123,7 @@ INSTALLED_APPS = (
     'lfs.price',
     'lfs.search',
     'lfs.shipping',
+    'lfs.supplier',
     'lfs.tagging',
     'lfs.tax',
     'lfs.utils',
@@ -197,7 +199,10 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
                  'django_jenkins.tasks.with_coverage',
                  'django_jenkins.tasks.django_tests',
                  'django_jenkins.tasks.run_pep8',
-                 'django_jenkins.tasks.run_pyflakes',)
+                 'django_jenkins.tasks.run_pyflakes',
+                 'django_jenkins.tasks.windmill_tests',)
+
+PISTON_DISPLAY_ERRORS = True
 
 try:
     from local_settings import *
