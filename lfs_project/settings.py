@@ -62,6 +62,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'timelog.middleware.TimeLogMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -69,7 +70,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",    
     "pagination.middleware.PaginationMiddleware",
    'lfs.utils.middleware.AJAXSimpleExceptionResponse',
-#    'lfs.utils.middleware.ProfileMiddleware',
+   'lfs.utils.middleware.ProfileMiddleware',
 #    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -83,6 +84,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     # "devserver",
+    "timelog",
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +134,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'debug_toolbar',
 	'postal',
+	"django_coverage",
 )
 
 FORCE_SCRIPT_NAME=""
@@ -206,3 +209,32 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
+
+TIMELOG_LOG = '/Users/Kai/Temp/timelog.log'
+
+LOGGING = {
+  'version': 1,
+  'formatters': {
+    'plain': {
+      'format': '%(asctime)s %(message)s'},
+    },
+  'handlers': {
+    'timelog': {
+      'level': 'DEBUG',
+      'class': 'logging.handlers.RotatingFileHandler',
+      'filename': TIMELOG_LOG,
+      'maxBytes': 1024 * 1024 * 5,  # 5 MB
+      'backupCount': 5,
+      'formatter': 'plain',
+    },
+  },
+  'loggers': {
+    'timelog.middleware': {
+      'handlers': ['timelog'],
+      'level': 'DEBUG',
+      'propogate': False,
+     }
+  }
+}
