@@ -114,6 +114,7 @@ INSTALLED_APPS = (
     "lfs.discounts",
     "lfs.export",
     'lfs.gross_price',
+    'lfs.integrationtests',
     'lfs.mail',
     'lfs.manage',
     'lfs.marketing',
