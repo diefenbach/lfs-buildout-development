@@ -212,7 +212,7 @@ except ImportError:
 
 COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
 
-TIMELOG_LOG = '/Users/Kai/Temp/timelog.log'
+TIMELOG_LOG = '/tmp/timelog.log'
 
 LOGGING = {
   'version': 1,
