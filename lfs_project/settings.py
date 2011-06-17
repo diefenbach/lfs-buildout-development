@@ -69,8 +69,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",    
     "pagination.middleware.PaginationMiddleware",
-   'lfs.utils.middleware.AJAXSimpleExceptionResponse',
-   'lfs.utils.middleware.ProfileMiddleware',
+    "lfs.utils.middleware.AJAXSimpleExceptionResponse",
+    "lfs.utils.middleware.ProfileMiddleware",
 #    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -83,7 +83,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # "devserver",
     "timelog",
     "django.contrib.admin",
     'django.contrib.auth',
@@ -184,19 +183,6 @@ REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
 
-DEVSERVER_MODULES = (
-    'devserver.modules.sql.SQLRealTimeModule',
-    'devserver.modules.sql.SQLSummaryModule',
-    'devserver.modules.profile.ProfileSummaryModule',
-
-    # Modules not enabled by default
-    'devserver.modules.ajax.AjaxDumpModule',
-    # 'devserver.modules.profile.MemoryUseModule',
-    'devserver.modules.cache.CacheSummaryModule',
-)
-
-DEVSERVER_IGNORED_PREFIXES = ['/media']
-
 # apps that we want jenkins ci to test
 PROJECT_APPS = ['core',]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
@@ -208,36 +194,37 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
 
 PISTON_DISPLAY_ERRORS = True
 
+# django-coverage
+COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
+
+# django-timelog
+TIMELOG_LOG = '/tmp/timelog.log'
+LOGGING = {
+    "version": 1,
+    "formatters": {
+    "plain": {
+        "format": "%(asctime)s %(message)s"},
+    },
+    "handlers": {
+        "timelog": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": TIMELOG_LOG,
+            "maxBytes": 1024 * 1024 * 5,  # 5 MB
+            "backupCount": 5,
+            "formatter": "plain",
+        },
+    },
+    "loggers": {
+        "timelog.middleware": {
+            "handlers": ["timelog"],
+            "level": "DEBUG",
+            "propogate": False,
+        }
+    }
+}
+
 try:
     from local_settings import *
 except ImportError:
     pass
-
-COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
-
-TIMELOG_LOG = '/tmp/timelog.log'
-
-LOGGING = {
-  'version': 1,
-  'formatters': {
-    'plain': {
-      'format': '%(asctime)s %(message)s'},
-    },
-  'handlers': {
-    'timelog': {
-      'level': 'DEBUG',
-      'class': 'logging.handlers.RotatingFileHandler',
-      'filename': TIMELOG_LOG,
-      'maxBytes': 1024 * 1024 * 5,  # 5 MB
-      'backupCount': 5,
-      'formatter': 'plain',
-    },
-  },
-  'loggers': {
-    'timelog.middleware': {
-      'handlers': ['timelog'],
-      'level': 'DEBUG',
-      'propogate': False,
-     }
-  }
-}
