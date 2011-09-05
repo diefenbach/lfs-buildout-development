@@ -62,7 +62,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'timelog.middleware.TimeLogMiddleware',
+    # 'timelog.middleware.TimeLogMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -83,7 +83,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    "timelog",
+    # "timelog",
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'lfs.manage',
     'lfs.marketing',
     'lfs.manufacturer',
+    'lfs.net_price',
     'lfs.order',
     'lfs.page',
     'lfs.payment',
@@ -163,8 +164,8 @@ INTERNAL_IPS = (
 
 # CACHE_BACKEND = 'file:///'
 # CACHE_BACKEND = 'locmem:///'
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-# CACHE_BACKEND = 'dummy:///'
+# CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'dummy:///'
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -199,13 +200,25 @@ COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
 
 # django-timelog
 TIMELOG_LOG = '/tmp/timelog.log'
+LFS_LOGGING_FILE = "/Users/Kai/Temp/lfs.log"
+
 LOGGING = {
     "version": 1,
     "formatters": {
-    "plain": {
-        "format": "%(asctime)s %(message)s"},
+        "plain": {
+            "format": "%(asctime)s %(message)s"
+        },
+        "verbose": {
+            "format": "%(asctime)s %(levelname)s %(message)s",
+            "datefmt": "%a, %d %b %Y %H:%M:%S",
+        },
     },
     "handlers": {
+         "console":{
+            "level":"DEBUG",
+            "class":"logging.StreamHandler",
+            "formatter": "verbose",
+        },
         "timelog": {
             "level": "DEBUG",
             "class": "logging.handlers.RotatingFileHandler",
@@ -214,13 +227,30 @@ LOGGING = {
             "backupCount": 5,
             "formatter": "plain",
         },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': LFS_LOGGING_FILE,
+            'mode': 'a',
+        },            
     },
     "loggers": {
         "timelog.middleware": {
             "handlers": ["timelog"],
             "level": "DEBUG",
             "propogate": False,
-        }
+        },
+        "default": {
+            "handlers": ["logfile", "console"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+        "deprecated": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
     }
 }
 
