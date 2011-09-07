@@ -200,7 +200,7 @@ COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
 
 # django-timelog
 TIMELOG_LOG = '/tmp/timelog.log'
-LFS_LOGGING_FILE = "/Users/Kai/Temp/lfs.log"
+LFS_LOGGING_FILE = "/tmp/lfs.log"
 
 LOGGING = {
     "version": 1,
