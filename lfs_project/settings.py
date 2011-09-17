@@ -42,6 +42,10 @@ USE_I18N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = DIRNAME + "/media"
 
+# static files settings
+STATIC_URL = '/static/'
+STATIC_ROOT = DIRNAME + "/sitestatic"
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
@@ -89,6 +93,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     "django.contrib.flatpages",
     "django.contrib.redirects",    
     "django.contrib.sitemaps",
@@ -149,6 +154,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
     'lfs.core.context_processors.main',
 )
 
