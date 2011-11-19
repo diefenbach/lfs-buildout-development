@@ -3,7 +3,7 @@ lfs.db
 .installed.cfg
 *.pyc
 *.pyo
-*.DS_Store 
+*.DS_Store
 *develop-eggs/
 *.egg-info/
 *eggs/
@@ -13,6 +13,7 @@ lfs.db
 *lib/
 *include/
 *lfs_project/media
+*lfs_project/sitestatic
 *pysqlite2-doc/
 server.pid
 restart.sh
