@@ -4,6 +4,9 @@ DIRNAME = os.path.dirname(__file__)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+TESTING = False
+COMPRESS_ENABLED = True
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -59,6 +62,12 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+0zsw5n@v7*rhl6r6ufqhoc6jlqq0f-u8c+gh(hjb+_jmg@rh6'
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -71,7 +80,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",    
+    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "lfs.utils.middleware.ProfileMiddleware",
@@ -88,6 +97,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     # "timelog",
+    "compressor",
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,7 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     "django.contrib.flatpages",
-    "django.contrib.redirects",    
+    "django.contrib.redirects",
     "django.contrib.sitemaps",
     'django_countries',
     'django_extensions',
@@ -240,7 +250,7 @@ LOGGING = {
             'formatter': 'verbose',
             'filename': LFS_LOGGING_FILE,
             'mode': 'a',
-        },            
+        },
     },
     "loggers": {
         "timelog.middleware": {
