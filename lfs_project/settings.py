@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 TESTING = False
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
