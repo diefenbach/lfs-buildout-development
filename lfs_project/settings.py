@@ -3,8 +3,6 @@ DIRNAME = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
-TESTING = False
 COMPRESS_ENABLED = False
 
 ADMINS = (
