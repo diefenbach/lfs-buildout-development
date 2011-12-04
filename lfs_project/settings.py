@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'lfs.utils',
     'lfs.voucher',
     "lfs_contact",
+    "lfs_order_numbers",
     'paypal.standard.ipn',
     'paypal.standard.pdt',
     'gunicorn',
