@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'lfs.page',
     'lfs.payment',
     'lfs.portlet',
-    'lfs.price',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
@@ -145,6 +144,7 @@ INSTALLED_APPS = (
     'lfs.utils',
     'lfs.voucher',
     "lfs_contact",
+    "lfs_order_numbers",
     'paypal.standard.ipn',
     'paypal.standard.pdt',
     'gunicorn',
@@ -192,6 +192,8 @@ PAYPAL_IDENTITY_TOKEN = "set_this_to_your_paypal_pdt_identity_token"
 LFS_PAYPAL_REDIRECT = True
 LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
+
+LFS_APP_ORDER_NUMBERS = "lfs_order_numbers"
 
 REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
