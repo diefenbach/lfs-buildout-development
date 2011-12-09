@@ -136,7 +136,6 @@ INSTALLED_APPS = (
     'lfs.page',
     'lfs.payment',
     'lfs.portlet',
-    'lfs.price',
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
