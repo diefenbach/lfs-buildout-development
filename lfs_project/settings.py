@@ -4,6 +4,7 @@ DIRNAME = os.path.dirname(__file__)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 COMPRESS_ENABLED = False
+COMPRESS_CACHE_BACKEND = 'locmem:///'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -73,7 +74,6 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    # 'timelog.middleware.TimeLogMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -82,7 +82,7 @@ MIDDLEWARE_CLASSES = (
     "pagination.middleware.PaginationMiddleware",
     "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "lfs.utils.middleware.ProfileMiddleware",
-#    'debug_toolbar.middleware.DebugToolbarMiddleware',
+   # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -94,7 +94,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # "timelog",
     "compressor",
     "django.contrib.admin",
     'django.contrib.auth',
@@ -151,8 +150,11 @@ INSTALLED_APPS = (
     'gunicorn',
     'debug_toolbar',
 	'postal',
-	"django_coverage",
+    "lfs_bench",
+    "django_nose",
 )
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 FORCE_SCRIPT_NAME=""
 LOGIN_URL = "/login/"
@@ -179,8 +181,9 @@ INTERNAL_IPS = (
 
 # CACHE_BACKEND = 'file:///'
 # CACHE_BACKEND = 'locmem:///'
-# CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-CACHE_BACKEND = 'dummy:///'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+# CACHE_BACKEND = 'dummy:///'
+CACHE_MIDDLEWARE_KEY_PREFIX = "lfs"
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -195,7 +198,7 @@ LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
 
 LFS_APP_ORDER_NUMBERS = "lfs_order_numbers"
-LFS_DOCS = "http://readthedocs.org/docs/lightning-fast-shop/en/latest"
+LFS_DOCS = "http://docs.getlfs.com/docs/lightning-fast-shop/en/latest/"
 
 REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
@@ -214,12 +217,7 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
 
 PISTON_DISPLAY_ERRORS = True
 
-# django-coverage
-COVERAGE_ADDITIONAL_MODULES = ["lfs.catalog"]
-
-# django-timelog
-TIMELOG_LOG = '/tmp/timelog.log'
-LFS_LOGGING_FILE = "/tmp/lfs.log"
+LFS_LOGGING_FILE = DIRNAME + "/../lfs.log"
 
 LOGGING = {
     "version": 1,
@@ -238,14 +236,6 @@ LOGGING = {
             "class":"logging.StreamHandler",
             "formatter": "verbose",
         },
-        "timelog": {
-            "level": "DEBUG",
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": TIMELOG_LOG,
-            "maxBytes": 1024 * 1024 * 5,  # 5 MB
-            "backupCount": 5,
-            "formatter": "plain",
-        },
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
@@ -255,11 +245,6 @@ LOGGING = {
         },
     },
     "loggers": {
-        "timelog.middleware": {
-            "handlers": ["timelog"],
-            "level": "DEBUG",
-            "propogate": False,
-        },
         "default": {
             "handlers": ["logfile", "console"],
             "level": "DEBUG",
