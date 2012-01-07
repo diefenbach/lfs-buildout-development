@@ -1,4 +1,6 @@
 import os
+from django.utils.translation import gettext_lazy as _
+
 DIRNAME = os.path.dirname(__file__)
 
 DEBUG = True
@@ -205,6 +207,11 @@ REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
 
+LFS_PRICE_CALCULATORS = [
+    ['lfs.gross_price.GrossPriceCalculator', _(u'Price includes tax')],
+    ['lfs.net_price.NetPriceCalculator', _(u'Price excludes tax')],
+]
+
 # apps that we want jenkins ci to test
 PROJECT_APPS = ['core',]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
@@ -217,7 +224,7 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
 
 PISTON_DISPLAY_ERRORS = True
 
-LFS_LOGGING_FILE = DIRNAME + "/../lfs.log"
+LFS_LOG_FILE = DIRNAME + "/../lfs.log"
 
 LOGGING = {
     "version": 1,
@@ -240,7 +247,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
-            'filename': LFS_LOGGING_FILE,
+            'filename': LFS_LOG_FILE,
             'mode': 'a',
         },
     },
