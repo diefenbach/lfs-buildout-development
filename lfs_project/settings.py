@@ -199,7 +199,9 @@ LFS_PAYPAL_REDIRECT = True
 LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
 
-LFS_APP_ORDER_NUMBERS = "lfs_order_numbers"
+LFS_ORDER_NUMBER_GENERATOR = "lfs_order_numbers.models.OrderNumberGenerator"
+LFS_ORDER_NUMBER_GENERATOR_FORM = "lfs_order_numbers.forms.OrderNumberGeneratorForm"
+
 LFS_DOCS = "http://docs.getlfs.com/docs/lightning-fast-shop/en/latest/"
 
 REVIEWS_SHOW_PREVIEW = False
