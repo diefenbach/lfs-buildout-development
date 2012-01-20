@@ -24,3 +24,8 @@ urlpatterns += patterns("",
     (r'^admin/', include(admin.site.urls)),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': os.path.join(DIRNAME, "media"), 'show_indexes': True }),
 )
+
+try:
+    from local_urls import *
+except ImportError:
+    pass

@@ -18,6 +18,7 @@ lfs.db
 server.pid
 restart.sh
 local_settings.py
+local_urls.py
 .project
 .pydevproject
 .settings
