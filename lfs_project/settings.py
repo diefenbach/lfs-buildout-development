@@ -217,6 +217,21 @@ LFS_SHIPPING_PRICE_CALCULATORS = [
     ["lfs.shipping.NetShippingMethodPriceCalculator", _(u'Price excludes tax')],
 ]
 
+LFS_UNITS = [
+    ["l", u"l"],
+    ["m", u"m"],
+    ["qm", u"qm"],
+    ["cm", u"cm"],
+    ["lfm", u"lfm"],
+]
+
+LFS_PRICE_UNITS = LFS_UNITS
+LFS_BASE_PRICE_UNITS = LFS_UNITS
+
+LFS_PACKING_UNITS = [
+    ["Paket", u"Paket"],
+]
+
 # apps that we want jenkins ci to test
 PROJECT_APPS = ['core',]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
