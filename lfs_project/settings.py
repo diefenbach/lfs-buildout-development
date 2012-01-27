@@ -207,6 +207,11 @@ REVIEWS_IS_NAME_REQUIRED = False
 REVIEWS_IS_EMAIL_REQUIRED = False
 REVIEWS_IS_MODERATED = False
 
+LFS_INVOICE_EMAIL_REQUIRED = False
+LFS_INVOICE_PHONE_REQUIRED = False
+LFS_INVOICE_COMPANY_NAME_REQUIRED = False
+LFS_SHIPPING_PHONE_REQUIRED = False
+
 LFS_PRICE_CALCULATORS = [
     ['lfs.gross_price.GrossPriceCalculator', _(u'Price includes tax')],
     ['lfs.net_price.NetPriceCalculator', _(u'Price excludes tax')],
