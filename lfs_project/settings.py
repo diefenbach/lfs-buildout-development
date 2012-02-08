@@ -217,7 +217,7 @@ LFS_PRICE_CALCULATORS = [
     ['lfs.net_price.NetPriceCalculator', _(u'Price excludes tax')],
 ]
 
-LFS_SHIPPING_PRICE_CALCULATORS = [
+LFS_SHIPPING_METHOD_PRICE_CALCULATORS = [
     ["lfs.shipping.GrossShippingMethodPriceCalculator", _(u'Price includes tax')],
     ["lfs.shipping.NetShippingMethodPriceCalculator", _(u'Price excludes tax')],
 ]
