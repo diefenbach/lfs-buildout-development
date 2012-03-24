@@ -97,6 +97,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     "compressor",
+    "lfstheme",
     "django.contrib.admin",
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,7 +110,6 @@ INSTALLED_APPS = (
     'django_countries',
     'django_extensions',
     'django_jenkins',
-    "lfstheme",
     "pagination",
     'reviews',
     "tagging",
@@ -199,7 +199,7 @@ LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
 
 LFS_ORDER_NUMBER_GENERATOR = "lfs_order_numbers.models.OrderNumberGenerator"
-LFS_DOCS = "http://docs.getlfs.com/docs/lightning-fast-shop/en/latest/"
+LFS_DOCS = "http://docs.getlfs.com/en/latest/"
 
 REVIEWS_SHOW_PREVIEW = False
 REVIEWS_IS_NAME_REQUIRED = False
