@@ -237,7 +237,7 @@ LFS_UNITS = [
 LFS_PRICE_UNITS = LFS_BASE_PRICE_UNITS = LFS_PACKING_UNITS = LFS_UNITS
 
 # apps that we want jenkins ci to test
-PROJECT_APPS = ['core',]
+PROJECT_APPS = ['lfs.core',]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
                  #'django_jenkins.tasks.with_coverage',
                  'django_jenkins.tasks.django_tests',
