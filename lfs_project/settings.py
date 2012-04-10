@@ -193,7 +193,8 @@ EMAIL_HOST_PASSWORD = ""
 PAYPAL_RECEIVER_EMAIL = "info@yourbusiness.com"
 PAYPAL_IDENTITY_TOKEN = "set_this_to_your_paypal_pdt_identity_token"
 
-# TODO: Put this into the Shop model
+LFS_LOCALE = "en_US.UTF-8"
+
 LFS_PAYPAL_REDIRECT = True
 LFS_AFTER_ADD_TO_CART = "lfs_added_to_cart"
 LFS_RECENT_PRODUCTS_LIMIT = 5
