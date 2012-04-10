@@ -109,7 +109,7 @@ INSTALLED_APPS = (
     'django_countries',
     'django_extensions',
     'django_jenkins',
-    "lfstheme",
+    "lfs_theme",
     "pagination",
     'reviews',
     "tagging",
