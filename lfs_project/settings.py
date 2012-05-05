@@ -237,6 +237,18 @@ LFS_UNITS = [
 
 LFS_PRICE_UNITS = LFS_BASE_PRICE_UNITS = LFS_PACKING_UNITS = LFS_UNITS
 
+LFS_CRITERIA = [
+    ["lfs.criteria.models.CartPriceCriterion", _(u"Cart Price")],
+    ["lfs.criteria.models.CombinedLengthAndGirthCriterion", _(u"Combined Length and Girth")],
+    ["lfs.criteria.models.CountryCriterion", _(u"Country")],
+    ["lfs.criteria.models.HeightCriterion", _(u"Height")],
+    ["lfs.criteria.models.LengthCriterion", _(u"Length")],
+    ["lfs.criteria.models.WidthCriterion", _(u"Width")],
+    ["lfs.criteria.models.WeightCriterion", _(u"Weight")],
+    ["lfs.criteria.models.ShippingMethodCriterion", _(u"Shipping Method")],
+    ["lfs.criteria.models.PaymentMethodCriterion", _(u"Payment Method")],
+]
+
 # apps that we want jenkins ci to test
 PROJECT_APPS = ['lfs.core',]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
