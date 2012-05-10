@@ -1,4 +1,5 @@
 lfs.db
+lfs.log
 .installed.cfg
 *.pyc
 *.pyo
@@ -11,3 +12,5 @@ lfs.db
 *downloads/
 *sitestatic/
 *media/
+*dlcache/
+*.mr.developer.cfg
