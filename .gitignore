@@ -14,3 +14,4 @@ lfs.log
 *media/
 .mr.developer.cfg
 *dlcache/
+src/
