@@ -15,3 +15,5 @@ lfs.log
 *dlcache/
 *.mr.developer.cfg
 src/
+lfs_project/local_settings.py
+lfs_project/local_urls.py
