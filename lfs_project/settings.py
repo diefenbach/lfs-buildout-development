@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'lfs.voucher',
     "lfs_contact",
     "lfs_order_numbers",
+    "lfs_paypal",
     'paypal.standard.ipn',
     'paypal.standard.pdt',
     'gunicorn',
@@ -214,6 +215,10 @@ LFS_INVOICE_PHONE_REQUIRED = True
 LFS_SHIPPING_COMPANY_NAME_REQUIRED = False
 LFS_SHIPPING_EMAIL_REQUIRED = False
 LFS_SHIPPING_PHONE_REQUIRED = False
+
+LFS_PAYMENT_METHOD_PROCESSORS = [
+    ["lfs_paypal.PayPalProcessor", _(u"PayPal")],
+]
 
 LFS_PRICE_CALCULATORS = [
     ['lfs.gross_price.GrossPriceCalculator', _(u'Price includes tax')],
