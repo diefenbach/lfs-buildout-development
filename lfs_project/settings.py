@@ -115,6 +115,7 @@ INSTALLED_APPS = (
     "tagging",
     "portlets",
     "lfs",
+    "lfs.addresses",
     "lfs.tests",
     'lfs.core',
     'lfs.caching',
