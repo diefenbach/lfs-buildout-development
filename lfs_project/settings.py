@@ -84,6 +84,7 @@ MIDDLEWARE_CLASSES = (
     "pagination.middleware.PaginationMiddleware",
     "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "lfs.utils.middleware.ProfileMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
