@@ -156,6 +156,7 @@ INSTALLED_APPS = (
 	'postal',
     "lfs_bench",
     "django_nose",
+    "lfs_criterion_us_states",
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -254,6 +255,7 @@ LFS_CRITERIA = [
     ["lfs.criteria.models.WeightCriterion", _(u"Weight")],
     ["lfs.criteria.models.ShippingMethodCriterion", _(u"Shipping Method")],
     ["lfs.criteria.models.PaymentMethodCriterion", _(u"Payment Method")],
+    ["lfs_criterion_us_states.models.USStatesCriterion", _(u"US State")],
 ]
 
 # apps that we want jenkins ci to test
