@@ -14,10 +14,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'lfs.db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'lfs-dev',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -30,7 +32,7 @@ DATABASES = {
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'UTC'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -81,6 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "lfs.utils.middleware.AJAXSimpleExceptionResponse",
     "lfs.utils.middleware.ProfileMiddleware",
@@ -153,15 +156,16 @@ INSTALLED_APPS = (
     'paypal.standard.pdt',
     'gunicorn',
     'debug_toolbar',
-	'postal',
+    'postal',
     "lfs_bench",
     "django_nose",
     "lfs_criterion_us_states",
+    "corsheaders",
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-FORCE_SCRIPT_NAME=""
+FORCE_SCRIPT_NAME = ""
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/manage/"
 
@@ -259,7 +263,7 @@ LFS_CRITERIA = [
 ]
 
 # apps that we want jenkins ci to test
-PROJECT_APPS = ['lfs.core',]
+PROJECT_APPS = ['lfs.core', ]
 JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
                  #'django_jenkins.tasks.with_coverage',
                  'django_jenkins.tasks.django_tests',
@@ -284,9 +288,9 @@ LOGGING = {
         },
     },
     "handlers": {
-         "console":{
-            "level":"DEBUG",
-            "class":"logging.StreamHandler",
+         "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
         'logfile': {
@@ -310,6 +314,10 @@ LOGGING = {
         },
     }
 }
+
+# This leaves CORS wide open; only for dev use
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 try:
     from local_settings import *
