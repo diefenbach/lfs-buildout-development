@@ -1,5 +1,6 @@
 lfs.db
 lfs.log
+.idea
 .installed.cfg
 *.pyc
 *.pyo

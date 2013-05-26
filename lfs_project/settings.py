@@ -153,10 +153,11 @@ INSTALLED_APPS = (
     'paypal.standard.pdt',
     'gunicorn',
     'debug_toolbar',
-	'postal',
+    'postal',
     "lfs_bench",
     "django_nose",
     "lfs_criterion_us_states",
+    "south"
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
