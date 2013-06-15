@@ -276,7 +276,7 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
 
 PISTON_DISPLAY_ERRORS = True
 
-LFS_LOG_FILE = os.path.join(DIRNAME, "/../lfs.log")
+LFS_LOG_FILE = os.path.join(DIRNAME, "../lfs.log")
 
 LOGGING = {
     "version": 1,
