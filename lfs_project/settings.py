@@ -185,11 +185,16 @@ INTERNAL_IPS = (
     "127.0.0.1",
 )
 
-# CACHE_BACKEND = 'file:///'
-# CACHE_BACKEND = 'locmem:///'
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-# CACHE_BACKEND = 'dummy:///'
+
 CACHE_MIDDLEWARE_KEY_PREFIX = "lfs"
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        #'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'KEY_PREFIX': 'lfs'
+    }
+}
+
 
 EMAIL_HOST = ""
 EMAIL_HOST_USER = ""
@@ -271,7 +276,7 @@ JENKINS_TASKS = ('django_jenkins.tasks.run_pylint',
 
 PISTON_DISPLAY_ERRORS = True
 
-LFS_LOG_FILE = DIRNAME + "/../lfs.log"
+LFS_LOG_FILE = os.path.join(DIRNAME, "/../lfs.log")
 
 LOGGING = {
     "version": 1,
