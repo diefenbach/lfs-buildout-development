@@ -3,16 +3,16 @@ What is it?
 
 This is the development buildout script for LFS. 
 
-It will create a complete developement evironment for LFS. 
+It will create a complete developement evironment for [LFS](https://github.com/diefenbach/django-lfs).
 
 LFS is an online shop based on Python, Django and jQuery.
 
 How to use it?
 ==============
 
-1. Check it out from bitbucket
+1. Check it out from GitHub
     
-    $ hg clone https://bitbucket.org/diefenbach/lfs-buildout-development
+    $ git clone git@github.com:diefenbach/lfs-buildout-development.git
 
 2. Change to the directory
 
@@ -47,10 +47,10 @@ How to use it?
 More Information
 ================
 
-* `Official page <http://www.getlfs.com/>`_
-* `Documentation on PyPI <http://packages.python.org/django-lfs/index.html>`_
-* `Releases on PyPI <http://pypi.python.org/pypi/django-lfs>`_
-* `Source code on bitbucket.org <http://bitbucket.org/diefenbach/django-lfs>`_
-* `Google Group <http://groups.google.com/group/django-lfs>`_
-* `lfsproject on Twitter <http://twitter.com/lfsproject>`_
-* `IRC <irc://irc.freenode.net/django-lfs>`_
+* Official page http://www.getlfs.com/
+* Documentation on PyPI http://packages.python.org/django-lfs/index.html
+* Releases on PyPI http://pypi.python.org/pypi/django-lfs
+* Source code on GitHub https://github.com/diefenbach/django-lfs
+* Google Group http://groups.google.com/group/django-lfs
+* lfsproject on Twitter http://twitter.com/lfsproject
+* IRC irc://irc.freenode.net/django-lfs
