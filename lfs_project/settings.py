@@ -153,9 +153,9 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'postal',
     "lfs_bench",
+    "south",
     "django_nose",
     "lfs_criterion_us_states",
-    "south"
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
