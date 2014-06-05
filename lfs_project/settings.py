@@ -315,6 +315,8 @@ LOGGING = {
     }
 }
 
+SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
+
 try:
     from local_settings import *
 except ImportError:
