@@ -1,4 +1,5 @@
 import os
+import sys
 from django.utils.translation import gettext_lazy as _
 
 DIRNAME = os.path.dirname(__file__)
@@ -162,6 +163,8 @@ INSTALLED_APPS = (
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
+NOSE_ARGS = ['--nocapture']
+
 FORCE_SCRIPT_NAME=""
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/manage/"
@@ -316,6 +319,10 @@ LOGGING = {
         },
     }
 }
+
+# disable south logger while running tests to prevent output of huge amount of data
+if 'test' in sys.argv:
+    LOGGING['loggers']['south'] = dict(level="INFO")
 
 try:
     from local_settings import *
