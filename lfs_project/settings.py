@@ -114,7 +114,6 @@ INSTALLED_APPS = (
     "lfs_theme",
     "pagination",
     'reviews',
-    "tagging",
     "portlets",
     "lfs",
     "lfs.addresses",
@@ -143,7 +142,6 @@ INSTALLED_APPS = (
     'lfs.search',
     'lfs.shipping',
     'lfs.supplier',
-    'lfs.tagging',
     'lfs.tax',
     'lfs.utils',
     'lfs.voucher',
@@ -156,9 +154,9 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'postal',
     "lfs_bench",
+    "south",
     "django_nose",
     "lfs_criterion_us_states",
-    "south"
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -319,6 +317,8 @@ LOGGING = {
         },
     }
 }
+
+SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
 
 # disable south logger while running tests to prevent output of huge amount of data
 if 'test' in sys.argv:
