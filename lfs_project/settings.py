@@ -130,7 +130,6 @@ INSTALLED_APPS = (
     'paypal.standard.ipn',
     'south',
 
-    'lfs_bench',
     'lfs_criterion_us_states',
     'django_nose',
     'debug_toolbar',
