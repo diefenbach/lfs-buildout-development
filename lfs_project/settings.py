@@ -151,7 +151,6 @@ INSTALLED_APPS = (
     'gunicorn',
     'debug_toolbar',
 	'postal',
-    "lfs_bench",
     "django_nose",
 )
 
