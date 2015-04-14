@@ -94,7 +94,6 @@ INSTALLED_APPS = (
     'pagination',
     'reviews',
     'portlets',
-    'lfs',
     'lfs.addresses',
     'lfs.caching',
     'lfs.cart',
@@ -128,7 +127,6 @@ INSTALLED_APPS = (
     'localflavor',
     'postal',
     'paypal.standard.ipn',
-    'south',
     'lfs_criterion_us_states',
     'django_nose',
     'debug_toolbar',
@@ -274,10 +272,6 @@ JENKINS_TASKS = (
 )
 
 PISTON_DISPLAY_ERRORS = True
-
-# disable south logger while running tests to prevent output of huge amount of data
-if 'test' in sys.argv:
-    LOGGING['loggers']['south'] = dict(level="INFO")
 
 try:
     from local_settings import *
