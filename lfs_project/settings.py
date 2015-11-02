@@ -136,14 +136,19 @@ FORCE_SCRIPT_NAME = ""
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/manage/"
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.debug',
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'lfs.core.context_processors.main',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {'context_processors': ('django.template.context_processors.debug',
+                                           'django.contrib.auth.context_processors.auth',
+                                           'django.template.context_processors.request',
+                                           'django.template.context_processors.media',
+                                           'django.template.context_processors.static',
+                                           'lfs.core.context_processors.main',
+                                          )}
+    },
+]
 
 AUTHENTICATION_BACKENDS = (
     'lfs.customer.auth.EmailBackend',
